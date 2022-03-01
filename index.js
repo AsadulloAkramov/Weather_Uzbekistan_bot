@@ -3,7 +3,7 @@ import request from 'request';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const { TOKEN }= process.env;
+const { TOKEN, WEATHER_APP_ID }= process.env;
 const bot = new TelegramBot(TOKEN , { polling:true});
 
 bot.on('polling_error' , (err) => console.log(err));
@@ -12,7 +12,7 @@ bot.onText(/\/city (.+)/ , (msg , match)=> {
   const city = match[1];
   const query =
   'http://api.openweathermap.org/data/2.5/weather?q='
-          + city + '&appid=d4129e207e5edafd77d4638baba5d041';
+          + city + `&appid=${WEATHER_APP_ID}`;
   console.log(JSON.stringify(match));
   // Fetch weather data about entered city
   request(query , function (error , response , body) {
@@ -53,8 +53,7 @@ bot.onText(/\/city (.+)/ , (msg , match)=> {
             sunSet.toLocaleTimeString() + '\nCountry: '+
             res.sys.country
        );
-     }
-     
+     }     
      else {
         bot.sendMessage(chatId , response.statusCode)
         bot.sendMessage(chatId , city);
