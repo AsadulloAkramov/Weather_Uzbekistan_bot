@@ -1,0 +1,21 @@
+{
+  "name": "jsdemobot",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "This demo bot is created to learn for beginners ",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Asadullo Akramov",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "node-telegram-bot-api": "^0.56.0",
+    "request": "^2.88.2",
+    "telebot": "^1.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
